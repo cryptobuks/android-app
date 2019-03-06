@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_search.*
@@ -96,7 +97,7 @@ class SearchFragment : BaseFragment(), Injectable {
         super.onActivityCreated(savedInstanceState)
         searchContext = Job()
         searchChannel = Channel()
-        search_rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        search_rv.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         search_rv.addItemDecoration(StickyRecyclerHeadersDecoration(searchAdapter))
         search_rv.adapter = searchAdapter
 

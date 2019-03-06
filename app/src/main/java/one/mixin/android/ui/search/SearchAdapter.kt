@@ -73,7 +73,7 @@ class SearchAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), StickyRec
             }
             1 -> {
                 dataList[position].let {
-                    if (position == userList!!.size - 1) {
+                    if (position == (assetList?.size ?: 0) + userList!!.size - 1) {
                         (holder as ContactHolder).bind(it as User, onItemClickListener, true)
                     } else {
                         (holder as ContactHolder).bind(it as User, onItemClickListener)
@@ -84,9 +84,9 @@ class SearchAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), StickyRec
                 dataList[position].let {
                     (holder as GroupHolder).bind(it as ConversationItemMinimal,
                         onItemClickListener, if (userList != null) {
-                        position == userList!!.size + groupList!!.size - 1
+                        position == (assetList?.size ?: 0) + userList!!.size + groupList!!.size - 1
                     } else {
-                        position == groupList!!.size - 1
+                        position == (assetList?.size ?: 0) + groupList!!.size - 1
                     })
                 }
             }
@@ -94,13 +94,13 @@ class SearchAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), StickyRec
                 dataList[position].let {
                     (holder as MessageHolder).bind(it as SearchMessageItem, onItemClickListener,
                         !(if (userList != null && groupList != null) {
-                            position == userList!!.size + groupList!!.size + messageList!!.size - 1
+                            position == (assetList?.size ?: 0) + userList!!.size + groupList!!.size + messageList!!.size - 1
                         } else if (userList != null) {
-                            position == userList!!.size + messageList!!.size - 1
+                            position == (assetList?.size ?: 0) + userList!!.size + messageList!!.size - 1
                         } else if (groupList != null) {
-                            position == groupList!!.size + messageList!!.size - 1
+                            position == (assetList?.size ?: 0) + groupList!!.size + messageList!!.size - 1
                         } else {
-                            position == messageList!!.size - 1
+                            position == (assetList?.size ?: 0) + messageList!!.size - 1
                         }))
                 }
             }
