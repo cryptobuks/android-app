@@ -4,9 +4,9 @@ import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import android.view.View
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import one.mixin.android.MixinApplication
@@ -130,9 +130,6 @@ abstract class BaseViewHolder constructor(containerView: View) : RecyclerView.Vi
                         AppCompatResources.getDrawable(itemView.context, R.drawable.ic_status_read)
                     else -> null
                 }
-            drawable.also {
-                it?.setBounds(0, 0, dp10, dp10)
-            }
             setIcon(drawable)
         } else {
             hideIcon()
